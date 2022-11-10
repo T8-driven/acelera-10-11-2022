@@ -45,7 +45,7 @@ app.post("/herois", async (req, res) => {
 app.get("/herois", async (req, res) => {
   try {
     const herois = await collectionHerois.find().toArray();
-    res.send(herois);
+    res.status(200).send(herois);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
