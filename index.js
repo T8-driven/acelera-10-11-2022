@@ -42,7 +42,15 @@ app.post("/herois", async (req, res) => {
   }
 });
 
-
+app.get("/herois", async (req, res) => {
+  try {
+    const herois = await collectionHerois.find().toArray();
+    res.send(herois);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
 
 app.listen(process.env.PORT, () =>
   console.log(`Server running in port: ${process.env.PORT}`)
